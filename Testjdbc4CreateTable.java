@@ -1,0 +1,22 @@
+package day1;
+
+import java.sql.*;
+
+public class Testjdbc4CreateTable {
+
+	public static void main(String[] args) {
+		//jdbc½¨±í
+		try(Connection c=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+			PreparedStatement p=c.prepareStatement("create table S(id number(2) primary key,name varchar2(20) not null)");
+		)
+		{
+			boolean b = p.execute();
+			System.out.println(b);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
